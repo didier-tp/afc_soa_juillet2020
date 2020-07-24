@@ -2,6 +2,7 @@ package fr.afcepf.springws.service;
 
 import fr.afcepf.springws.entity.Devise;
 
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.List;
 
@@ -9,7 +10,9 @@ import java.util.List;
 public interface DeviseService {
 
      List<Devise> allDevises();
-     Devise deviseByCode(String code);
-     Devise sauvegarderDevise(Devise devise);//save or update
-     double convertir(double montant, String codeDeviseSource,String codeDeviseCible);
+     Devise deviseByCode(@WebParam(name="code")String code);
+     Devise sauvegarderDevise(@WebParam(name="devise") Devise devise);//save or update
+     double convertir(@WebParam(name="montant")double montant,
+                      @WebParam(name="codeDeviseSource")String codeDeviseSource,
+                      @WebParam(name="codeDeviseCible")String codeDeviseCible);
 }

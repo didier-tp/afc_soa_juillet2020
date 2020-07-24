@@ -21,7 +21,7 @@ public class Devise {
     private String code; //"EUR" , "USD"
     private String name; // "euro" , "dollar"
     @Column(name="e_change")
-    private double change; //nb unite pour 1 euro
+    private double change; //nb unite pour 1 dollar
 
     public Devise(String code,String name,double change ) {
         this.code = code;

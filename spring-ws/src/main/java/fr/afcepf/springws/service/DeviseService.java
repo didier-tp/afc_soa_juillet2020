@@ -10,6 +10,7 @@ import java.util.List;
 public interface DeviseService {
 
      List<Devise> allDevises();
+     List<Devise> devisesByChangeMini(@WebParam(name="changeMini")double changeMini);
      Devise deviseByCode(@WebParam(name="code")String code);
      Devise sauvegarderDevise(@WebParam(name="devise") Devise devise);//save or update
      double convertir(@WebParam(name="montant")double montant,

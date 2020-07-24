@@ -24,6 +24,11 @@ public class DeviseServiceImpl implements DeviseService{
     }
 
     @Override
+    public List<Devise> devisesByChangeMini(double changeMini) {
+        return deviseDao.findByChangeGreaterThanEqual(changeMini);
+    }
+
+    @Override
     public Devise deviseByCode(String code) {
         return deviseDao.findById(code).orElse(null);
         //ou .get() pour renvoyer une exception si pas trouvé

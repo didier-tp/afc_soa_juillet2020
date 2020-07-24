@@ -1,6 +1,7 @@
 package fr.afcepf.springws;
 
 import fr.afcepf.springws.service.CalculTva;
+import fr.afcepf.springws.service.DeviseService;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.transport.servlet.CXFServlet;
@@ -31,8 +32,19 @@ public class CxfSoapConfig {
     @Autowired 
     private CalculTva calculTva; //service spring interne
     
-    //@Autowired
-    //private IS2 s2;
+    @Autowired
+    private DeviseService deviseService;
+
+    @Bean
+    public EndpointImpl deviseServiceEndpoint() {
+        Bus bus = (Bus) applicationContext.getBean(Bus.DEFAULT_BUS_ID);
+        EndpointImpl endpoint = new EndpointImpl(bus, deviseService /* implementor */);
+        endpoint.publish("/deviseService");
+        //URL soap complete:
+        //http://localhost:8383/spring-ws/service/deviseService
+        //http://localhost:8383/spring-ws/service/deviseService?wsdl
+        return endpoint;
+    }
  
     // Replaces cxf-servlet.xml
     @Bean
@@ -46,5 +58,7 @@ public class CxfSoapConfig {
         //http://localhost:8383/spring-ws/service/calculTva?wsdl
         return endpoint;
     }
+
+
 }
  

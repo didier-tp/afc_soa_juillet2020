@@ -25,7 +25,8 @@ public class DeviseRestCtrl {
     //http://localhost:8383/spring-ws/devise-api/private/devise/EUR appelé en DELETE
     @DeleteMapping(value="/private/devise/{codeDevise}")
     // si retour de type String+throw ou ResponseEntity<String> , "ok " ou "echec"
-    // si retour de type DeleteResponse+throw ResponseEntity<DeleteResponse> , { "message" : "ok" , "success" : "ok}
+    // si retour de type DeleteResponse+throw ResponseEntity<DeleteResponse> , { "message" : "ok" , "success" : true}
+    /*
     ResponseEntity<DeleteResponse> deleteDeviseByCodeV1(@PathVariable(name="codeDevise") String code)
             throws MyEntityNotFoundException {
         try {
@@ -38,8 +39,8 @@ public class DeviseRestCtrl {
                     DeleteResponse.withError("devise with code=" + code + " was not found "),
                     HttpStatus.NOT_FOUND);
         }
-    }
-    /*
+    }*/
+
     ResponseEntity<Map<String,Object>> deleteDeviseByCodeV2(@PathVariable(name="codeDevise") String code)
             throws MyEntityNotFoundException {
         Map<String,Object> deleteResponseMap = new HashMap<>();
@@ -53,7 +54,7 @@ public class DeviseRestCtrl {
             deleteResponseMap.put("message","devise with code=" + code + " was not found , not deleted ");
             return new ResponseEntity<Map<String,Object>>(deleteResponseMap,HttpStatus.NOT_FOUND);
         }
-    }*/
+    }
 
     //http://localhost:8383/spring-ws/devise-api/private/devise appelé en POST
     //avec dans la partie body de request des données json de de type
@@ -62,19 +63,21 @@ public class DeviseRestCtrl {
     Devise postDevise(@RequestBody Devise dev) {
          Devise alreadyExistingDev= deviseService.deviseByCode(dev.getCode());
          if(alreadyExistingDev!=null)
-             throw new  MyAlreadyExistsException("ajout impossible , une devise existe déjà avec le code="+dev.getCode());
+             throw new  MyAlreadyExistsException(
+                     "ajout impossible , une devise existe déjà avec le code="+dev.getCode());
          deviseService.sauvegarderDevise(dev);
          return dev;
     }
 
     //http://localhost:8383/spring-ws/devise-api/private/devise appelé en PUT
     //avec dans la partie body de request des données json de de type
-    //{ "code" : "m1" , "name" : "monnaie1" , "change" : 1.1234 }
+    //{ "code" : "m1" , "name" : "monnaie1_bis" , "change" : 1.12364 }
     @PutMapping(value="/private/devise")
     Devise putDevise(@RequestBody Devise dev) {
         Devise alreadyExistingDev= deviseService.deviseByCode(dev.getCode());
         if(alreadyExistingDev==null)
-            throw new  MyEntityNotFoundException("modification impossible , aucune devise n'existe avec le code="+dev.getCode());
+            throw new  MyEntityNotFoundException(
+                    "modification impossible , aucune devise n'existe avec le code="+dev.getCode());
         deviseService.sauvegarderDevise(dev);
         return dev;
     }

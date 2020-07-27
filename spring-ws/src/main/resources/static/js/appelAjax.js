@@ -9,6 +9,8 @@ function onSearchDevise(){
     var urlWsGet="./devise-api/public/devise/"+codeDevise;
     makeAjaxGetRequest(urlWsGet,function (response){
         //response ici au format "json string"
-        zoneResultat.innerHTML=response;
+        //zoneResultat.innerHTML=response;
+        var jsDevise = JSON.parse(response);
+        zoneResultat.innerHTML=jsDevise.change; //ou .rate
     });
 }

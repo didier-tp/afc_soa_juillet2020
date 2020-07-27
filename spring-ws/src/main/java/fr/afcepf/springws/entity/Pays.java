@@ -1,5 +1,6 @@
 package fr.afcepf.springws.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Pays {
     private String capitale;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    //@JsonIgnore
     @JoinColumn(name="devise") //colonne clef etrangère
                                //de la table pays référencant une devise
     private Devise devise;

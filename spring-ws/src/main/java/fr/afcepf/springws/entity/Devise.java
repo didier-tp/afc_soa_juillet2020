@@ -24,7 +24,7 @@ public class Devise {
     private double change; //nb unite pour 1 dollar
 
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "devise")
-    //@JsonIgnore
+    @JsonIgnore //pour limiter la serialisation "java" --> "json"
     private List<Pays> pays;
 
     public void addPays(Pays p){

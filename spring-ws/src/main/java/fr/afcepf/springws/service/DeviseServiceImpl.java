@@ -45,4 +45,9 @@ public class DeviseServiceImpl implements DeviseService{
         Devise deviseCible = deviseDao.findById(codeDeviseCible).get();
         return montant * deviseCible.getChange() / deviseSource.getChange(); //ou ???
     }
+
+    @Override
+    public void deleteDeviseByCode(String code) {
+        deviseDao.deleteById(code);
+    }
 }

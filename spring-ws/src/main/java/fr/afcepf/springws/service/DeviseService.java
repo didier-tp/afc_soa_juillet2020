@@ -16,4 +16,5 @@ public interface DeviseService {
      double convertir(@WebParam(name="montant")double montant,
                       @WebParam(name="codeDeviseSource")String codeDeviseSource,
                       @WebParam(name="codeDeviseCible")String codeDeviseCible);
+     void deleteDeviseByCode(@WebParam(name="code")String code);
 }

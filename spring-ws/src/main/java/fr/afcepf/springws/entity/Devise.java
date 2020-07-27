@@ -1,14 +1,14 @@
 package fr.afcepf.springws.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,6 +22,17 @@ public class Devise {
     private String name; // "euro" , "dollar"
     @Column(name="e_change")
     private double change; //nb unite pour 1 dollar
+
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "devise")
+    //@JsonIgnore
+    private List<Pays> pays;
+
+    public void addPays(Pays p){
+        if(this.pays==null){
+            pays = new ArrayList<>();
+        }
+        this.pays.add(p);
+    }
 
     public Devise(String code,String name,double change ) {
         this.code = code;

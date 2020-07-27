@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/devise-api", headers="Accept=application/json")
@@ -37,6 +39,21 @@ public class DeviseRestCtrl {
                     HttpStatus.NOT_FOUND);
         }
     }
+    /*
+    ResponseEntity<Map<String,Object>> deleteDeviseByCodeV2(@PathVariable(name="codeDevise") String code)
+            throws MyEntityNotFoundException {
+        Map<String,Object> deleteResponseMap = new HashMap<>();
+        try {
+            deviseService.deleteDeviseByCode(code);
+            deleteResponseMap.put("success",true);
+            deleteResponseMap.put("message","devise with code=" + code + " is successfully deleted ");
+            return new ResponseEntity<Map<String,Object>>(deleteResponseMap,HttpStatus.OK);
+        }catch(Exception ex){
+            deleteResponseMap.put("success",false);
+            deleteResponseMap.put("message","devise with code=" + code + " was not found , not deleted ");
+            return new ResponseEntity<Map<String,Object>>(deleteResponseMap,HttpStatus.NOT_FOUND);
+        }
+    }*/
 
     //http://localhost:8383/spring-ws/devise-api/private/devise appelé en POST
     //avec dans la partie body de request des données json de de type

@@ -16,6 +16,8 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Table(name="devise")
+//avec inteliJ settings / build / annotation processor / Enable annotation processing
+//+ plugin lombok pour inteliJ
 public class Devise {
     @Id
     private String code; //"EUR" , "USD"

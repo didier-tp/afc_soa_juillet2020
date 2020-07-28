@@ -1,3 +1,5 @@
+
+
 //subfunction with errCallback as optional callback
 function registerCallbacks(xhr,callback,errCallback) {
     xhr.onreadystatechange = function() {
@@ -13,9 +15,15 @@ function registerCallbacks(xhr,callback,errCallback) {
     };
 }
 
+function registerTokenInRequest(xhr){
+    var token = sessionStorage.getItem("token");
+    xhr.setRequestHeader("Authorization", "Bearer "+token);
+}
+
 function makeAjaxGetRequest(url,callback,errCallback) {
     var xhr = new XMLHttpRequest();
     registerCallbacks(xhr,callback,errCallback);
+    registerTokenInRequest(xhr);
     xhr.open("GET", url, true);
     xhr.send(null);
 }
@@ -23,6 +31,7 @@ function makeAjaxGetRequest(url,callback,errCallback) {
 function makeAjaxDeleteRequest(url,callback,errCallback) {
     var xhr = new XMLHttpRequest();
     registerCallbacks(xhr,callback,errCallback);
+    registerTokenInRequest(xhr);
     xhr.open("DELETE", url, true);
     xhr.send(null);
 }
@@ -30,6 +39,7 @@ function makeAjaxDeleteRequest(url,callback,errCallback) {
 function makeAjaxPostRequest(url,jsonData,callback,errCallback) {
     var xhr = new XMLHttpRequest();
     registerCallbacks(xhr,callback,errCallback);
+    registerTokenInRequest(xhr);
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(jsonData);
@@ -38,6 +48,7 @@ function makeAjaxPostRequest(url,jsonData,callback,errCallback) {
 function makeAjaxPutRequest(url,jsonData,callback,errCallback) {
     var xhr = new XMLHttpRequest();
     registerCallbacks(xhr,callback,errCallback);
+    registerTokenInRequest(xhr);
     xhr.open("PUT", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(jsonData);

@@ -1,6 +1,7 @@
 package fr.afcepf.springws.rest;
 
 import fr.afcepf.springws.dto.DeleteResponse;
+import fr.afcepf.springws.dto.ResConv;
 import fr.afcepf.springws.entity.Devise;
 import fr.afcepf.springws.exception.MyAlreadyExistsException;
 import fr.afcepf.springws.exception.MyEntityNotFoundException;
@@ -119,6 +120,18 @@ public class DeviseRestCtrl {
         else {
             return deviseService.devisesByChangeMini(changeMini);
         }
+    }
+
+    //http://localhost:8383/spring-ws/devise-api/public/devise-convert?src=EUR&target=USD&amount=200
+    @GetMapping(value="/public/devise-convert")
+    ResConv convertDevises(@RequestParam(value="src",required=true) String src,
+                           @RequestParam(value="target",required=true) String target,
+                           @RequestParam(value="amount",required=true) Double amount){
+
+        ResConv resConv = new ResConv();
+        resConv.setSrc(src); resConv.setTarget(target); resConv.setAmount(amount);
+        resConv.setResult(deviseService.convertir(amount,src,target));
+        return resConv;
     }
 
 }

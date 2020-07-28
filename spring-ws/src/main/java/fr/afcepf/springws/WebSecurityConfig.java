@@ -50,7 +50,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 	    	//.antMatchers("/devise-api/private/**").authenticated()
 			.antMatchers("/**").permitAll()
 			//.and().formLogin().permitAll()
-			//.and().cors() //enable CORS (avec @CrossOrigin sur class @RestController)
+			 .and().cors()//enable CORS (avec @CrossOrigin sur class @RestController)
 			.and().csrf().disable();
 			// If the user is not authenticated, returns 401
 			//.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

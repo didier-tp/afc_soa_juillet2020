@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "*") //"*" : autoriser tout le monde en phase de dev
 @RequestMapping(value = "/devise-api", headers="Accept=application/json")
 public class DeviseRestCtrl {
 

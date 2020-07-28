@@ -23,33 +23,33 @@ function registerTokenInRequest(xhr){
 function makeAjaxGetRequest(url,callback,errCallback) {
     var xhr = new XMLHttpRequest();
     registerCallbacks(xhr,callback,errCallback);
-    registerTokenInRequest(xhr);
     xhr.open("GET", url, true);
+    registerTokenInRequest(xhr);
     xhr.send(null);
 }
 
 function makeAjaxDeleteRequest(url,callback,errCallback) {
     var xhr = new XMLHttpRequest();
     registerCallbacks(xhr,callback,errCallback);
-    registerTokenInRequest(xhr);
     xhr.open("DELETE", url, true);
+    registerTokenInRequest(xhr);
     xhr.send(null);
 }
 
 function makeAjaxPostRequest(url,jsonData,callback,errCallback) {
     var xhr = new XMLHttpRequest();
     registerCallbacks(xhr,callback,errCallback);
-    registerTokenInRequest(xhr);
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
+    registerTokenInRequest(xhr);
     xhr.send(jsonData);
 }
 
 function makeAjaxPutRequest(url,jsonData,callback,errCallback) {
     var xhr = new XMLHttpRequest();
     registerCallbacks(xhr,callback,errCallback);
-    registerTokenInRequest(xhr);
     xhr.open("PUT", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
+    registerTokenInRequest(xhr);
     xhr.send(jsonData);
 }

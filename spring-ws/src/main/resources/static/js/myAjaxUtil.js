@@ -1,8 +1,8 @@
-function makeAjaxGetRequest(url,callback) {
+function makeAjaxGetRequest(url,callbackQueJaime) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-            callback(xhr.responseText);
+            callbackQueJaime(xhr.responseText);
         }
     };
     xhr.open("GET", url, true);

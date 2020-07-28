@@ -14,7 +14,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 	@Configuration
-	@Order(1)
 	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    @Autowired
 	    private BCryptPasswordEncoder passwordEncoder;
@@ -36,6 +35,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 	    @Override
 	    protected void configure(final HttpSecurity http) throws Exception {
+	    	//NB: if multiple config , http.authorizeRequests() means http.antMatcher("/**").authorizeRequests()....
 	    	http.authorizeRequests()
 			.antMatchers("/",
 	                "/favicon.ico",

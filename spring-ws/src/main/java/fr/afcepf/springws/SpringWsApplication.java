@@ -11,7 +11,7 @@ public class SpringWsApplication {
 
         //SpringApplication.run(MySpringBootApplication.class, args);
         SpringApplication app = new SpringApplication(SpringWsApplication.class);
-        app.setAdditionalProfiles("initData");
+        app.setAdditionalProfiles("initData","swagger");
         ConfigurableApplicationContext context = app.run(args);
         System.out.println("http://localhost:8383/spring-ws");
     }

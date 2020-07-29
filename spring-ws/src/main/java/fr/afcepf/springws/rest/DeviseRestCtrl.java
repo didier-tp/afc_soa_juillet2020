@@ -28,7 +28,7 @@ public class DeviseRestCtrl {
     @DeleteMapping(value="/private/devise/{codeDevise}")
     // si retour de type String+throw ou ResponseEntity<String> , "ok " ou "echec"
     // si retour de type DeleteResponse+throw ResponseEntity<DeleteResponse> , { "message" : "ok" , "success" : true}
-    /*
+
     ResponseEntity<DeleteResponse> deleteDeviseByCodeV1(@PathVariable(name="codeDevise") String code)
             throws MyEntityNotFoundException {
         try {
@@ -41,8 +41,8 @@ public class DeviseRestCtrl {
                     DeleteResponse.withError("devise with code=" + code + " was not found "),
                     HttpStatus.NOT_FOUND);
         }
-    }*/
-
+    }
+/*
     ResponseEntity<Map<String,Object>> deleteDeviseByCodeV2(@PathVariable(name="codeDevise") String code)
             throws MyEntityNotFoundException {
         Map<String,Object> deleteResponseMap = new HashMap<>();
@@ -56,7 +56,7 @@ public class DeviseRestCtrl {
             deleteResponseMap.put("message","devise with code=" + code + " was not found , not deleted ");
             return new ResponseEntity<Map<String,Object>>(deleteResponseMap,HttpStatus.NOT_FOUND);
         }
-    }
+    }*/
 
     //http://localhost:8383/spring-ws/devise-api/private/devise appelé en POST
     //avec dans la partie body de request des données json de de type

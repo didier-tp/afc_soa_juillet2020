@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 	    private BCryptPasswordEncoder passwordEncoder;
 
 	    @Autowired
-	    public void globalUserDetails(final AuthenticationManagerBuilder auth) throws Exception {
+	    public void globalUserDetailsV2LeRetour(final AuthenticationManagerBuilder auth) throws Exception {
 	    	String pwd1Crypted =  passwordEncoder.encode("pwd1");
 			System.out.println("pwd1Crypted via bcrypt:"+pwd1Crypted);
 		    auth.inMemoryAuthentication()

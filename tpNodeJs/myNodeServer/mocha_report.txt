@@ -1,0 +1,13 @@
+
+> mynodeserver@1.0.0 test D:\tp\local-git-didier-tp-repositories\isikadev5_frontend\tpNodeJs\myNodeServer
+> mocha --reporter spec
+
+
+
+  my calculator tests
+initialisation : new ... or ...
+    √ res_ttc==240?
+
+
+  1 passing (23ms)
+

@@ -1,5 +1,5 @@
 var express = require('express');
-var orchestrateurApiRoutes = require('./orchestrateur-api-routes');
+var orchestrateurApiRoutes = require('./orchestrateur-api-routes_v3_promise_et_axios');
 var bodyParser = require('body-parser');
 var app = express();
 

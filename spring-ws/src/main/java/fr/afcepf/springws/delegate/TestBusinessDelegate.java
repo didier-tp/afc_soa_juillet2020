@@ -11,7 +11,8 @@ import javax.annotation.PostConstruct;
 // ws 8282 sont démarrés
 // orchestrateur 8484 démarré
 
-@Component
+//@Component //si en commentaire , test pas activé
+             //si sans commentaire , code de test déclenché au démarrage
 public class TestBusinessDelegate {
 
     @Autowired

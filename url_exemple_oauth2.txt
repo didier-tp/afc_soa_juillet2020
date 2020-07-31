@@ -1,0 +1,3 @@
+https://github.com/didier-mycontrib/basicOAuth2AuthServer
+et
+https://github.com/didier-mycontrib/basicOAuth2ResourceServer

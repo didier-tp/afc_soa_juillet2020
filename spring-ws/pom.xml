@@ -97,10 +97,15 @@
     </dependencies>
 
     <build>
+	    <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+			        <mainClass>fr.afcepf.springws.SpringWsApplication</mainClass>
+                    <layout>ZIP</layout>
+			    </configuration>
             </plugin>
         </plugins>
     </build>
